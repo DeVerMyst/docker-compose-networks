@@ -5,7 +5,7 @@ Ce code démontre une architecture micro-services utilisant Docker Compose, Fast
 ## Structure du Projet
 
 ```plaintext
-C:\GITHUB\0_Formation_IA\DOCKER-KUBERNETES\docker-compose-networks\
+docker-compose-networks\
 ├── docker-compose.yml        # Orchestration globale des services
 ├── child_api/                # Micro-service récepteur (interne uniquement)
 │   ├── child_api.py
