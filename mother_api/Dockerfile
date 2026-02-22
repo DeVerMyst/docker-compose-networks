@@ -1,10 +1,8 @@
-FROM python:3.9
-
+FROM python:3.11-slim-bookworm
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+ENV UV_SYSTEM_PYTHON=1
 WORKDIR /app
-
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-
-COPY mother_api.py .
-
+COPY pyproject.toml uv.lock ./
+RUN uv pip install --system --no-cache -r pyproject.toml
+COPY . .
 CMD ["uvicorn", "mother_api:app", "--host", "0.0.0.0", "--port", "8000"]

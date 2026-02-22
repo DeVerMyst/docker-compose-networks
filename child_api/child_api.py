@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
 from loguru import logger
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -10,4 +10,4 @@ class IdPayload(BaseModel):
 @app.post("/receive_id")
 async def receive_id(payload: IdPayload):
     logger.info(f"Received id: {payload.id}")
-    return {"message": "Id received"}
+    return {"status": "success", "received": payload.id}
